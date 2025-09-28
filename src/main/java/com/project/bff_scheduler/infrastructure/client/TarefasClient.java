@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@FeignClient(name = "agendador-tarefas", url = "${agendador-tarefas.url}")
+@FeignClient(name = "agendador-tarefas", url = "${task-scheduler.url}")
 public interface TarefasClient {
 
     @PostMapping
@@ -32,7 +32,7 @@ public interface TarefasClient {
                            @RequestHeader("Authorization") String token);
 
     @PatchMapping
-    TarefasDTOResponse alteraStatusNotificacao(@RequestParam("status") StatusNotificationEnum status,
+    TarefasDTOResponse alteraStatusNotification(@RequestParam("status") StatusNotificationEnum status,
                                                @RequestParam("id") String id,
                                                @RequestHeader("Authorization") String token);
 

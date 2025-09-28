@@ -10,10 +10,10 @@ import com.project.bff_scheduler.business.dto.out.UsuarioDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "usuario", url = "${usuario.url}")
+@FeignClient(name = "usuario", url = "${user.url}")
 public interface UsuarioClient {
 
-    @GetMapping("/usuario")
+    @GetMapping
     UsuarioDTOResponse buscaUsuarioPorEmail(@RequestParam("email") String email,
                                             @RequestHeader("Authorization") String token);
 
@@ -24,7 +24,7 @@ public interface UsuarioClient {
     String login(@RequestBody LoginRequestDTO usuarioDTO);
 
     @DeleteMapping("/{email}")
-    Void deletaUsuarioPorEmail(@PathVariable String email,
+    void deletaUsuarioPorEmail(@PathVariable String email,
                                @RequestHeader("Authorization") String token);
 
     @PutMapping
