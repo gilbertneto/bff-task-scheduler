@@ -24,5 +24,5 @@ public class TarefasDTOResponse {
     private String emailUsuario;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime dataAlteracao;
-    private StatusNotificationEnum statusNotificacaoEnum;
+    private StatusNotificationEnum statusNotificationEnum;
 }

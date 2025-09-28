@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Usuário", description = "Cadastro, login e usuários")
 @SecurityRequirement(name = SecurityConfig.SECURITY_SCHEME)
 
-
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -114,7 +113,7 @@ public class UsuarioController {
     public ResponseEntity<EnderecoDTOResponse> cadastraEndereco(@RequestBody EnderecoDTORequest dto,
                                                                 @RequestHeader(name = "Authorization", required = false) String token) {
 
-        return ResponseEntity.ok(usuarioService.cadastraEndereco(token, dto));
+        return ResponseEntity.ok(usuarioService.cadastraEndereco(dto, token));
     }
 
     @PostMapping("/telefone")
@@ -126,6 +125,6 @@ public class UsuarioController {
     public ResponseEntity<TelefoneDTOResponse> cadastraTelefone(@RequestBody TelefoneDTORequest dto,
                                                                 @RequestHeader(name = "Authorization", required = false) String token) {
 
-        return ResponseEntity.ok(usuarioService.cadastraTelefone(token, dto));
+        return ResponseEntity.ok(usuarioService.cadastraTelefone(dto, token));
     }
 }

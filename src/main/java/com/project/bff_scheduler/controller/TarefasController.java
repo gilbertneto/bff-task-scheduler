@@ -64,7 +64,8 @@ public class TarefasController {
     @Operation(summary = "Deleta Tarefa por ID", description = "Deleta tarefas cadastradas pelo ID.")
     @ApiResponse(responseCode = "200", description = "Tarefa deletada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor!")
-    public ResponseEntity<Void> deletaTarefaPorId(@RequestParam("id") String id, @RequestHeader(name = "Authorization", required = false) String token) {
+    public ResponseEntity<Void> deletaTarefaPorId(@RequestParam("id") String id,
+                                                  @RequestHeader(name = "Authorization", required = false) String token) {
         tarefasService.deletaTarefaPorId(id, token);
 
         return ResponseEntity.ok().build();
