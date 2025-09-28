@@ -32,12 +32,12 @@ public class TarefasService {
     }
 
     public void deletaTarefaPorId(String id, String token) {
-        tarefasClient.deletaTarefaPorId(token, id);
+        tarefasClient.deletaTarefaPorId(id, token);
     }
 
     public TarefasDTOResponse alteraStatus(StatusNotificationEnum status, String id,
                                            String token) {
-        return tarefasClient.alteraStatusNotificacao(status, id, token);
+        return tarefasClient.alteraStatusNotification(status, id, token);
     }
 
     public TarefasDTOResponse updateTarefas(TarefasDTORequest dto, String id, String token) {

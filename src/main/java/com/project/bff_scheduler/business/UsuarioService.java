@@ -24,7 +24,7 @@ public class UsuarioService {
     public String loginUsuario(LoginRequestDTO dto) {
         return client.login(dto);
     }
-
+    
     public UsuarioDTOResponse buscarUsuarioPorEmail(String email, String token) {
         return client.buscaUsuarioPorEmail(email, token);
     }
@@ -45,12 +45,12 @@ public class UsuarioService {
         return client.atualizaTelefone(dto, idTelefone, token);
     }
 
-    public EnderecoDTOResponse cadastraEndereco(String token, EnderecoDTORequest dto) {
+    public EnderecoDTOResponse cadastraEndereco(EnderecoDTORequest dto, String token) {
         return client.cadastraEndereco(dto, token);
 
     }
 
-    public TelefoneDTOResponse cadastraTelefone(String token, TelefoneDTORequest dto) {
+    public TelefoneDTOResponse cadastraTelefone(TelefoneDTORequest dto, String token) {
         return client.cadastraTelefone(dto, token);
 
     }
