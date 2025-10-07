@@ -26,6 +26,7 @@ public class CronService {
     @Value("${usuario.senha}")
     private String senha;
 
+//    pendente para revisão futura
     @Scheduled(cron = "${cron.horario}")
     public void buscaTarefasDaProximaHora() {
         String token = login(converterParaRequestDTO());
