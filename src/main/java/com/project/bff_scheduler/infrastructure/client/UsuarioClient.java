@@ -7,7 +7,9 @@ import com.project.bff_scheduler.business.dto.in.UsuarioDTORequest;
 import com.project.bff_scheduler.business.dto.out.EnderecoDTOResponse;
 import com.project.bff_scheduler.business.dto.out.TelefoneDTOResponse;
 import com.project.bff_scheduler.business.dto.out.UsuarioDTOResponse;
+import com.project.bff_scheduler.business.dto.out.ViaCepDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "usuario", url = "${user.url}")
@@ -48,5 +50,8 @@ public interface UsuarioClient {
     @PostMapping("/telefone")
     TelefoneDTOResponse cadastraTelefone(@RequestBody TelefoneDTORequest dto,
                                          @RequestHeader("Authorization") String token);
+
+    @GetMapping("/endereco/{cep}")
+    ViaCepDTOResponse buscarDadosCep(@PathVariable("cep") String cep);
 
 }
