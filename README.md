@@ -81,3 +81,9 @@ O repositório possui pipeline configurada em `.github/workflows`, executando bu
 - [ ] Adicionar tratamento de resiliência (circuit breaker/retry) nas chamadas Feign, ex.: Resilience4j
 - [ ] Adicionar Dockerfile e instruções de execução via container
 - [ ] Adicionar testes de integração cobrindo cenários de falha parcial dos serviços consumidos
+
+## Ecossistema Relacionado
+
+- https://github.com/gilbertneto/user
+- https://github.com/gilbertneto/notification	
+- https://github.com/gilbertneto/task-scheduler
