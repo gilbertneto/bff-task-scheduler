@@ -31,8 +31,8 @@ public class TarefasService {
         return tarefasClient.buscaTarefasPorEmail(token);
     }
 
-    public void deletaTarefaPorId(String id, String token) {
-        tarefasClient.deletaTarefaPorId(id, token);
+    public TarefasDTOResponse cancelarTarefaPorId(String id, String token) {
+       return tarefasClient.cancelarTarefaPorId(id, token);
     }
 
     public TarefasDTOResponse alteraStatus(StatusNotificationEnum status, String id,
