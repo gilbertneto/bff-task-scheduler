@@ -28,7 +28,7 @@ public interface TarefasClient {
     List<TarefasDTOResponse> buscaTarefasPorEmail(@RequestHeader("Authorization") String token);
 
     @DeleteMapping
-    void deletaTarefaPorId(@RequestParam("id") String id,
+    TarefasDTOResponse cancelarTarefaPorId(@RequestParam("id") String id,
                            @RequestHeader("Authorization") String token);
 
     @PatchMapping

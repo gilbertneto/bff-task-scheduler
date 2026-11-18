@@ -1,0 +1,62 @@
+services:
+  task-scheduler:
+    build:  ..\task-scheduler
+    container_name: task-scheduler
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATA_MONGODB_URI = mongodb://mongo:27017/db_agendador
+    depends_on:
+      - mongo
+  bff-scheduler:
+    build: .
+    container_name: bff-scheduler
+    ports:
+      - "8083:8083"
+    environment:
+      - USER_URL:user:8080/usuario
+      - TASK_SCHEDULER=task-scheduler:8081/tarefas
+      - NOTIFICATION_URL=notification:8082/email
+
+  user:
+    build:  ..\user
+    container_name: user
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/db_usuario
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - postgres
+
+  notification:
+    build: ..\notification
+    container_name: notification
+    ports:
+      - "8084:8084"
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: no
+
+    environment:
+      POSTGRES_DB: db_usuario
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5433:5432"
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    restart: no
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: db_agendador
+
+networks:
+  default:
+    driver: bridge
