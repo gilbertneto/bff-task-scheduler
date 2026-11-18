@@ -64,14 +64,14 @@ public class TarefasController {
     }
 
     @DeleteMapping
-    @Operation(summary = "Deleta Tarefa por ID", description = "Deleta tarefas cadastradas pelo ID.")
-    @ApiResponse(responseCode = "200", description = "Tarefa deletada")
+    @Operation(summary = "Cancela Tarefa por ID", description = "Cancelar tarefas cadastradas pelo ID.")
+    @ApiResponse(responseCode = "200", description = "Tarefa cancelada")
     @ApiResponse(responseCode = "500", description = "Erro de servidor!")
     @ApiResponse(responseCode = "403", description = "Tarefa ID não encontrado")
     @ApiResponse(responseCode = "401", description = "Usuário não autorizado")
-    public ResponseEntity<Void> deletaTarefaPorId(@RequestParam("id") String id,
+    public ResponseEntity<Void> cancelarTarefaPorId(@RequestParam("id") String id,
                                                   @RequestHeader(name = "Authorization", required = false) String token) {
-        tarefasService.deletaTarefaPorId(id, token);
+        tarefasService.cancelarTarefaPorId(id, token);
 
         return ResponseEntity.ok().build();
     }
